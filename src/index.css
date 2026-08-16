@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    margin: 0;
+    background-color: #12121f;
+    color: #f4f4ff;
+    font-family: 'Press Start 2P', monospace;
+    -webkit-font-smoothing: none;
+    font-smooth: never;
+    overscroll-behavior: none;
+  }
+
+  /* The game canvas owns arrow keys / space, so never scroll the shell. */
+  body.is-playing {
+    overflow: hidden;
+  }
+
+  canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  :focus-visible {
+    outline: 3px solid #ffd447;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Chunky 16-bit border built from box-shadow so it stays crisp at any zoom. */
+  .pixel-frame {
+    box-shadow:
+      0 0 0 3px #0b0b14,
+      0 0 0 6px #f4f4ff,
+      0 0 0 9px #0b0b14;
+  }
+
+  .pixel-frame-sm {
+    box-shadow:
+      0 0 0 2px #0b0b14,
+      0 0 0 4px #f4f4ff,
+      0 0 0 6px #0b0b14;
+  }
+
+  .pixel-btn {
+    @apply bg-panelLight text-white px-4 py-3 text-[10px] leading-relaxed transition-transform;
+    box-shadow:
+      0 0 0 2px #0b0b14,
+      0 4px 0 0 #0b0b14;
+  }
+
+  .pixel-btn:hover {
+    @apply bg-accent text-ink;
+  }
+
+  .pixel-btn:active {
+    transform: translateY(3px);
+    box-shadow:
+      0 0 0 2px #0b0b14,
+      0 1px 0 0 #0b0b14;
+  }
+
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.14) 0px,
+      rgba(0, 0, 0, 0.14) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

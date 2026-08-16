@@ -1,0 +1,16 @@
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+
+# Local tooling metadata and Windows crash dumps
+.atl/
+.claude/
+*.stackdump
+.env
+.env.*
+!.env.example
+.vscode/*
+!.vscode/extensions.json
+.idea
