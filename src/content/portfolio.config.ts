@@ -176,10 +176,7 @@ export const stations: Station[] = [
         meta: 'This portfolio',
         description:
           'The town you are standing in. No image assets: every sprite is a matrix of characters mapped to a palette and every tile is drawn with rectangles on canvas. The engine owns the game loop and React only renders these panels.',
-        // The repo is private, and a private repo returns a 404 to every
-        // visitor. Uncomment this the moment you make it public — a link that
-        // fails is worse than no link at all.
-        // repo: 'https://github.com/Ezequiel-Ramirez/dev-town',
+        repo: 'https://github.com/Ezequiel-Ramirez/dev-town',
         tags: ['React', 'TypeScript', 'Canvas', 'Vite'],
       },
 
